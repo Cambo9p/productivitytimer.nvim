@@ -1,10 +1,8 @@
-local socket = require("socket")
-
-local gettime = socket.gettime
+local utils = {}
 
 -- takes the input to the StartTimer function 
 --  and returns the time in seconds
-local function parse_time(input)
+utils.parse_time = function (input)
     local number, unit = input:match("(%d+)(%a)")
 
     if not number or not unit then
@@ -24,12 +22,4 @@ local function parse_time(input)
     return nil
 end
 
--- main entrypoint
-function StartTimer(time)
-    local exp_time = gettime()
-    local extra_seconds = parse_time(time)
-    if not extra_seconds then
-        -- there was an error 
-        print("There was an error parsing")
-    end
-end
+return utils
