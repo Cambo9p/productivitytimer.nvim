@@ -22,8 +22,11 @@ if vim.g.loaded_productivity_timer == 1 then
 end
 vim.g.loaded_productivity_timer = 1
 
-vim.api.nvim_create_user_command("StartTimer", function(args)
-    local input = args["line1"]
-    require("productivitytimer").StartTimer(input)
-end, {})
+-- TODO: current issue is that calling StartTimer "1s"
+-- only 1 gets passed into the StartTimer function
+vim.api.nvim_create_user_command("StartTimer", function(params)
+    require("productivitytimer").StartTimer(params)
+end, {
+    nargs = "*",
+})
 
