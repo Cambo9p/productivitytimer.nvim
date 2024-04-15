@@ -3,7 +3,7 @@ local utils = {}
 -- takes the input to the StartTimer function 
 --  and returns the time in seconds
 utils.parse_time = function (input)
-    local number, unit = input:match("(%d+)(%a)")
+    local number, unit = string.match(input, "(%d+)(%a)")
 
     if not number or not unit then
         return nil
