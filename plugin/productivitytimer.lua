@@ -3,10 +3,10 @@ if 1 ~= vim.fn.has "nvim-0.8.0" then
     return
 end
 
-if vim.g.loaded_productivity_timer == 1 then
-  return
-end
-vim.g.loaded_productivity_timer = 1
+--if vim.g.loaded_productivity_timer == 1 then
+--  return
+--end
+--vim.g.loaded_productivity_timer = 1
 
 vim.api.nvim_create_user_command("StartTimer", function(args)
     local input = args["line1"]
@@ -17,16 +17,14 @@ if 1 ~= vim.fn.has "nvim-0.8.0" then
     return
 end
 
-if vim.g.loaded_productivity_timer == 1 then
-  return
-end
-vim.g.loaded_productivity_timer = 1
 
 -- TODO: current issue is that calling StartTimer "1s"
 -- only 1 gets passed into the StartTimer function
-vim.api.nvim_create_user_command("StartTimer", function(params)
-    require("productivitytimer").StartTimer(params)
-end, {
-    nargs = "*",
-})
+vim.api.nvim_create_user_command("StartTimer",(
+     function(opts)
+        require("productivitytimer").StartTimer(opts.args)
+    end),
+    { nargs = 1 }
+)
+
 
