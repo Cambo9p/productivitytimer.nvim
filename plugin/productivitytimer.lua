@@ -17,9 +17,6 @@ if 1 ~= vim.fn.has "nvim-0.8.0" then
     return
 end
 
-
--- TODO: current issue is that calling StartTimer "1s"
--- only 1 gets passed into the StartTimer function
 vim.api.nvim_create_user_command("StartTimer",(
      function(opts)
         require("productivitytimer").StartTimer(opts.args)
