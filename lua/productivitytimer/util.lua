@@ -16,13 +16,12 @@ utils.parse_time = function (input)
     number = tonumber(number)
 
     if unit == "s" then
-        return number
+        return number * 1000
     elseif unit == "m" then
         return number * 60 * 1000
     elseif unit == "h" then
         return number * 3600 * 1000
     end
-    print("no bueno")
 
     return nil
 end
